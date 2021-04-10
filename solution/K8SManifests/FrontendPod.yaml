@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: frontend
+  name: frontend
+  namespace: techchallengeapp
+spec:
+  containers:
+    - name: frontend
+      image: servian/techchallengeapp:latest
+      #command: ["/bin/sh"]
+      args: ["serve"]
+      envFrom:
+      - secretRef:
+          name: frontend-secret
+      ports:
+      - name: liveness-port
+        containerPort: 3000
+        hostPort: 3000
+      livenessProbe:
+        httpGet:
+          path: /healthcheck
+          port: liveness-port
+        initialDelaySeconds: 15
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
