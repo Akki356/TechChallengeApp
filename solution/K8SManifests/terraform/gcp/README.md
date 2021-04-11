@@ -41,3 +41,5 @@ First gcloud container clusters list to get the cluster details.
 
 Next run gcloud container clusters get-credentials GKE_CLUSTER_ID --region REGION --project PROJECT_ID
 eg: gcloud container clusters get-credentials tech-challenge-app-project-gke --region us-central1 --project tech-challenge-app-project
+
+TF_VAR_postgresql_password=$(kubectl get secret postgresql-ha-postgresql -o=jsonpath='{.data.postgresql-password}' | base64 --decode )
