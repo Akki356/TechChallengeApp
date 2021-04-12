@@ -66,7 +66,7 @@ terraform init
 terraform apply
 ```
 Step 10:
-Enter password to set for the postgress user. The passwords can be managed using different repository eg: using pass password manager etc.
+Enter password to set for the postgress user. The passwords can be managed using different repository eg: using pass password manager, HashiCorp Vault etc.
 The config is stored using secret and exposed as environment variables in the pod. This is done to avoid saving the sensitive information on the filesystem. 
 
 Step 11: 
