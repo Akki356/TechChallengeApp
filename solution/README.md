@@ -2,13 +2,23 @@
 
 This directory contains code for deploying the application on a GCP GKE (K8S) cluster.
 
-Step 1: Install google cloud SDK
+Step 1: Install google cloud SDK, kubectl, Terraform
 
 On macos
 ```brew install --cask google-cloud-sdk```
 
+```gcloud components install kubectl```
+
+```brew tap hashicorp/tap``` 
+
+```brew install hashicorp/tap/terraform```
+
+
 For other operating systems please follow the instructions on the below link.
 https://cloud.google.com/sdk/docs/install
+https://learn.hashicorp.com/tutorials/terraform/install-cli
+https://kubernetes.io/docs/tasks/tools/included/install-kubectl-gcloud/
+
 
 Step 2: Initialize gcloud sdk
 ```gcloud init```
@@ -30,6 +40,7 @@ terraform.tfvars should look similar to one below
 project_id = "tech-challenge-app-project" #Change-me
 region     = "us-central1" #Change-me
 ```
+location of file ```solution/terraform/gcp/terraform.tfvars```
 
 Step 5: Enable compute engine API and Kubernetes engine API
 If you do not enable it now the next step will fail but terrafom will give you link to enable it.
@@ -56,7 +67,7 @@ terraform apply
 ```
 Step 10:
 Enter password to set for the postgress user. The passwords can be managed using different repository eg: using pass password manager etc.
-The config is stored using secret and exposed as environment varibales in the pod. This is done to avoid saving the sensitive information on the filesystem. 
+The config is stored using secret and exposed as environment variables in the pod. This is done to avoid saving the sensitive information on the filesystem. 
 
 Step 11: 
 Wait for terraform to successfully complete
