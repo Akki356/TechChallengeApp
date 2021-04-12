@@ -76,5 +76,5 @@ Till the ip becomes accessable you can check the frontend by using ```kubctl por
 eg:kubctl port-forward techchallengeapp-deployment-bf677df7f-4d8b5
 
 Step 12:
-Access the the frontend using browser on url http://localhost:3000
-
+Access the the frontend using browser on url http://localhost:3000 or http://externalip
+To find the external ip run ```kubectl get svc techchallengeapp-service```
