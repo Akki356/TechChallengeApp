@@ -37,9 +37,9 @@ resource "kubernetes_job" "techchallengeapp-updatedb" {
         container {
           image = "servian/techchallengeapp:latest"
           name  = "techchallengeapp-updatedb"
-          #command = ["/bin/sh"]
+          command = ["/bin/sh"]
           #args = ["-c","env;"]
-          args = ["updatedb -s"]
+          args = ["-c", "./TechChallengeApp updatedb; ./TechChallengeApp updatedb -s" ]
           env_from {
           secret_ref {
           name = "techchallengeapp-secret"
@@ -49,6 +49,7 @@ resource "kubernetes_job" "techchallengeapp-updatedb" {
         restart_policy = "Never"
       }
     }
+    ttl_seconds_after_finished = 0
     active_deadline_seconds  = 1200
     backoff_limit = 20
   }
@@ -94,7 +95,7 @@ resource "kubernetes_deployment" "techchallengeapp-deployment" {
               port = 3000
             }
             initial_delay_seconds = 10
-            period_seconds        = 20
+            period_seconds        = 30
           }
         }
       }

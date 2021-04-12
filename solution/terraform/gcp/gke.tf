@@ -13,10 +13,6 @@ variable "gke_num_nodes" {
   description = "number of gke nodes"
 }
 
-variable "postgresql_password" {
-  type = string
-  description = "password for postgresql user"
-}
 
 #variable "postgresql-password" {
 #  type = string
