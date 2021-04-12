@@ -55,7 +55,8 @@ terraform init
 terraform apply
 ```
 Step 10:
-Enter password to set for the postgress user.
+Enter password to set for the postgress user. The passwords can be managed using different repository eg: using pass password manager etc.
+The config is stored using secret and exposed as environment varibales in the pod. This is done to avoid saving the sensitive information on the filesystem. 
 
 Step 11: 
 Wait for terraform to successfully complete
@@ -65,3 +66,4 @@ eg:kubctl port-forward techchallengeapp-deployment-bf677df7f-4d8b5
 
 Step 12:
 Access the the frontend using browser on url localhost:3000
+
