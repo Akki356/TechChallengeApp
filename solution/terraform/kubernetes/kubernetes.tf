@@ -2,11 +2,12 @@ provider "kubernetes" {
   config_path    = "~/.kube/config"
 }
 
-resource "kubernetes_namespace" "techchallengeapp" {
-  metadata {
-    name = "techchallengeapp"
-  }
-}
+# Currently creating all the k8s objects in default namespace if required uncomment the code below and add the below namespaces in all the objects.
+#resource "kubernetes_namespace" "techchallengeapp" {
+#  metadata {
+#    name = "techchallengeapp"
+#  }
+#}
 
 resource "kubernetes_secret" "techchallengeapp-secret" {
   metadata {
